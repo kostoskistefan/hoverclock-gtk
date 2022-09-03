@@ -12,8 +12,6 @@ void XUtils::set_window_position(Gtk::Window *window, int x, int y)
 
 void set_net_wm_state(Gtk::Window *window, std::string atomName)
 {
-    // set_override_redirect(window, false);
-
     Window xWindow = gdk_x11_surface_get_xid(window->get_surface()->gobj());
     Display *display = gdk_x11_display_get_xdisplay(window->get_display()->gobj());
 
@@ -36,8 +34,6 @@ void set_net_wm_state(Gtk::Window *window, std::string atomName)
                (XEvent *) &xclient);
 
     XFlush(display);
-
-    // set_override_redirect(window, true);
 }
 
 void set_override_redirect(Gtk::Window *window, bool value)
@@ -64,4 +60,16 @@ void XUtils::hide_window_in_taskbar_and_pager(Gtk::Window *window)
 {
     set_net_wm_state(window, "_NET_WM_STATE_SKIP_TASKBAR");
     set_net_wm_state(window, "_NET_WM_STATE_SKIP_PAGER");
+}
+
+int XUtils::get_screen_width(Gtk::Window *window)
+{
+    Display *display = gdk_x11_display_get_xdisplay(window->get_display()->gobj());
+    return DisplayWidth(display, DefaultScreen(display));
+}
+
+int XUtils::get_screen_height(Gtk::Window *window)
+{
+    Display *display = gdk_x11_display_get_xdisplay(window->get_display()->gobj());
+    return DisplayHeight(display, DefaultScreen(display));
 }

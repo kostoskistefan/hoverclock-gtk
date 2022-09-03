@@ -3,14 +3,13 @@
     <object id="window" class="GtkApplicationWindow">
         <property name="name">hoverclock-window</property>
         <property name="title" translatable="1">Hoverclock</property>
-        <property name="width-request">80</property>
-        <property name="height-request">40</property>
         <property name="decorated">0</property>
         <child>
             <object class="GtkBox">
                 <property name="orientation">vertical</property>
                 <child>
                     <object class="GtkLabel" id="timeLabel">
+                        <property name="name">time-label</property>
                         <property name="label">00:00</property>
                         <property name="hexpand">1</property>
                         <property name="vexpand">1</property>
@@ -19,6 +18,7 @@
                 </child>
                 <child>
                     <object class="GtkLabel" id="dateLabel">
+                        <property name="name">date-label</property>
                         <property name="label">00/00/0000</property>
                         <property name="hexpand">1</property>
                         <property name="vexpand">1</property>

@@ -1,14 +1,6 @@
 #include "clock.h"
-#include "x_utils.h"
 #include <chrono>
 #include <iomanip>
-
-void Clock::initialize(Gtk::Window *window)
-{
-    XUtils::set_always_on_top(window);
-	XUtils::set_window_position(window, 1252, 694);
-	XUtils::hide_window_in_taskbar_and_pager(window);
-}
 
 std::string get_raw_time_date(std::string format)
 {

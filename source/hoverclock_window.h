@@ -4,6 +4,7 @@
 #include <gtkmm/applicationwindow.h>
 #include <gtkmm/builder.h>
 #include <gtkmm/label.h>
+#include "settings.h"
 
 class HoverclockWindow : public Gtk::ApplicationWindow
 {
@@ -18,6 +19,7 @@ protected:
     bool update_clock();
 
 private:
+	Settings *settings;
 	Gtk::Window *window;
     std::shared_ptr<Gtk::Builder> builder;
 	Gtk::Label *timeLabel;

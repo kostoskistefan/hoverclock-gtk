@@ -1,13 +1,12 @@
 #ifndef CLOCK_H
 #define CLOCK_H
 
-#include <gtkmm/window.h>
+#include <string>
 
 namespace Clock
 {
-    void initialize(Gtk::Window *window);
-    std::string get_time(std::string format = "%H:%M");
-    std::string get_date(std::string format = "%a %d %b");
+    std::string get_time(std::string format);
+    std::string get_date(std::string format);
 }
 
 #endif // CLOCK_H

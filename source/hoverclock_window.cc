@@ -2,6 +2,7 @@
 #include <gtkmm/cssprovider.h>
 #include <glibmm/main.h>
 #include "clock.h"
+#include "ui.h"
 
 HoverclockWindow::HoverclockWindow(
 	BaseObjectType *cobject,
@@ -13,17 +14,28 @@ HoverclockWindow::HoverclockWindow(
 	this->timeLabel = this->builder->get_widget<Gtk::Label>("timeLabel");
 	this->dateLabel = this->builder->get_widget<Gtk::Label>("dateLabel");
 
+	settings = new Settings();
+
 	load_style_sheet();
 	update_clock();
 
-	signal_realize().connect(sigc::bind(&Clock::initialize, this->window));
+	signal_realize().connect(sigc::bind(&UI::initialize, this->window));
     Glib::signal_timeout().connect_seconds(sigc::mem_fun(*this, &HoverclockWindow::update_clock), 1);
+
+	// TODO: Not sure if this is a right approach of calling the update_position function,
+	// because all other methods don't let me get the width and height of the window inside
+	// the update_position function.
+	Glib::signal_idle().connect_once(sigc::bind(&UI::update_position, this->window, this->settings));
+
+	this->set_opacity(settings->get_double("opacity"));
+	this->timeLabel->set_visible(settings->get_boolean("show_time"));
+	this->dateLabel->set_visible(settings->get_boolean("show_date"));
 }
 
 bool HoverclockWindow::update_clock()
 {
-	this->timeLabel->set_label(Clock::get_time());
-	this->dateLabel->set_label(Clock::get_date());
+	this->timeLabel->set_label(Clock::get_time(settings->get_string("time_format")));
+	this->dateLabel->set_label(Clock::get_date(settings->get_string("date_format")));
 	
 	return true;
 }

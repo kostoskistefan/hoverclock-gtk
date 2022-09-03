@@ -1,6 +1,17 @@
 #hoverclock-window {
-    padding: 4px;
+    padding: 3px 6px;
     background-color: rgba(0, 0, 0, 0.6);
     color: white;
-    border-radius: 8px;
+    border-radius: 4px;
+}
+
+#time-label
+{
+    font-size: 12px;
+    font-weight: bold;
+}
+
+#date-label
+{
+    font-size: 11px;
 }
