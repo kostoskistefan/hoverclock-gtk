@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+    <object id="window" class="GtkApplicationWindow">
+        <property name="name">hoverclock-window</property>
+        <property name="title" translatable="1">Hoverclock</property>
+        <property name="width-request">80</property>
+        <property name="height-request">40</property>
+        <property name="decorated">0</property>
+        <child>
+            <object class="GtkBox">
+                <property name="orientation">vertical</property>
+                <child>
+                    <object class="GtkLabel" id="timeLabel">
+                        <property name="label">00:00</property>
+                        <property name="hexpand">1</property>
+                        <property name="vexpand">1</property>
+                        <property name="halign">center</property>
+                    </object>
+                </child>
+                <child>
+                    <object class="GtkLabel" id="dateLabel">
+                        <property name="label">00/00/0000</property>
+                        <property name="hexpand">1</property>
+                        <property name="vexpand">1</property>
+                        <property name="halign">center</property>
+                    </object>
+                </child>
+            </object>
+        </child>
+    </object>
+</interface>
