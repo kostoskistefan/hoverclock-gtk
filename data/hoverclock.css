@@ -1,17 +1,32 @@
+@define-color background_color rgba(0, 0, 0, 0.2);
+@define-color stroke_color rgba(0, 0, 0, 0.3);
+
 #hoverclock-window {
     padding: 3px 6px;
-    background-color: rgba(0, 0, 0, 0.2);
+    background-color: @background_color;
     color: white;
     border-radius: 4px;
 }
 
-#time-label
-{
+#time-label {
     font-size: 12px;
     font-weight: bold;
 }
 
+#date-label {
+    font-size: 11px;
+}
+
+#time-label,
 #date-label
 {
-    font-size: 11px;
+    text-shadow:
+        -1px -1px 0 @stroke_color,
+        0 -1px 0 @stroke_color,
+        1px -1px 0 @stroke_color,
+        1px 0 0 @stroke_color,
+        1px 1px 0 @stroke_color,
+        0 1px 0 @stroke_color,
+        -1px 1px 0 @stroke_color,
+        -1px 0 0 @stroke_color;
 }

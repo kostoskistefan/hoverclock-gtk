@@ -19,9 +19,7 @@ static void on_activate(std::shared_ptr<Gtk::Application> &app)
 
 int main(int argc, char *argv[])
 {
-    bool anotherInstanceRunning = Guard::check_if_instance_already_running();
-    
-    if (anotherInstanceRunning)
+    if (Guard::is_instance_running())
     {
         fprintf(stderr, "\033[1;31m[-]\033[0m Another instance is already running!\n");
         exit(2);

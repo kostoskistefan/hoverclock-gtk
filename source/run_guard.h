@@ -3,7 +3,7 @@
 
 namespace Guard 
 {
-    bool check_if_instance_already_running();
+    bool is_instance_running();
 }
 
 #endif // RUN_GUARD_H

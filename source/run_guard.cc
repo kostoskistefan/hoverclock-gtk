@@ -3,7 +3,7 @@
 #include <errno.h>
 #include <stdio.h>
 
-bool Guard::check_if_instance_already_running()
+bool Guard::is_instance_running()
 {
     int pid_file = open("/tmp/hoverclock.pid", O_CREAT | O_RDWR, 0666);
 
