@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Name=Hoverclock
+Comment=A simple floating clock for Linux
+GenericName=Clock
+Keywords=clock;hover;float;time;
+Exec=/usr/bin/hoverclock
+Icon=hoverclock
+Terminal=false
+Type=Application
+Categories=GTK;Utility;
