@@ -9,7 +9,7 @@ TMP_SOURCE_FILES := $(shell find $(SOURCE_DIR) -name "*.cc")
 SOURCE_FILES = $(filter-out $(SOURCE_DIR)/resources.cc, $(TMP_SOURCE_FILES))
 OBJECT_FILES := $(patsubst $(SOURCE_DIR)/%.cc, $(OBJECT_DIR)/%.o, $(SOURCE_FILES))
 
-CFLAGS := $(shell pkg-config --cflags --libs gtkmm-4.0)-lX11 -Wall -Wextra -pedantic -g
+CFLAGS := $(shell pkg-config --cflags --libs gtkmm-4.0)-lX11 -lXfixes -Wall -Wextra -pedantic -g
 
 all: resources hoverclock
 

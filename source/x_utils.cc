@@ -1,6 +1,8 @@
 #include "x_utils.h"
 #include <gdk/x11/gdkx.h>
 #include <X11/Xlib.h>
+#include <X11/extensions/shape.h>
+#include <X11/extensions/Xfixes.h>
 
 void XUtils::set_window_position(Gtk::Window *window, int x, int y)
 {
@@ -60,6 +62,18 @@ void XUtils::hide_window_in_taskbar_and_pager(Gtk::Window *window)
 {
     set_net_wm_state(window, "_NET_WM_STATE_SKIP_TASKBAR");
     set_net_wm_state(window, "_NET_WM_STATE_SKIP_PAGER");
+}
+
+void XUtils::enable_click_through(Gtk::Window *window)
+{    
+    Window xWindow = gdk_x11_surface_get_xid(window->get_surface()->gobj());
+    Display *display = gdk_x11_display_get_xdisplay(window->get_display()->gobj());
+
+    XRectangle rect;
+
+    XserverRegion region = XFixesCreateRegion(display, &rect, 1);
+    XFixesSetWindowShapeRegion(display, xWindow, ShapeInput, 0, 0, region);
+    XFixesDestroyRegion(display, region);
 }
 
 int XUtils::get_screen_width(Gtk::Window *window)

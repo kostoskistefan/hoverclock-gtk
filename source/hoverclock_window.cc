@@ -30,6 +30,8 @@ HoverclockWindow::HoverclockWindow(
 	this->set_opacity(settings->get_double("opacity"));
 	this->timeLabel->set_visible(settings->get_boolean("show_time"));
 	this->dateLabel->set_visible(settings->get_boolean("show_date"));
+
+	set_can_focus(false);
 }
 
 bool HoverclockWindow::update_clock()

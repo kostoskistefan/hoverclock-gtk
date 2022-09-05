@@ -5,6 +5,7 @@ void UI::initialize(Gtk::Window *window)
 {
     XUtils::set_always_on_top(window);
     XUtils::hide_window_in_taskbar_and_pager(window);
+    XUtils::enable_click_through(window);
 }
 
 void UI::update_position(Gtk::Window *window, Settings *settings)
